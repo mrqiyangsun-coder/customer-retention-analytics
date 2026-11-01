@@ -1,0 +1,16 @@
+Project code: MIT License, see LICENSE.
+
+Dataset and dataset-derived reports/charts: Online Retail II, Chen, D. (2012).
+UCI Machine Learning Repository. DOI https://doi.org/10.24432/C5CG6D
+Dataset page https://archive.ics.uci.edu/dataset/502/online+retail+ii
+Source license: Creative Commons Attribution 4.0 International (CC BY 4.0).
+License text https://creativecommons.org/licenses/by/4.0/
+
+Changes: combined source sheets with documented cross-export occurrence
+reconciliation, classified records, constructed analytical aggregates and
+derived charts/model evaluations. These changes do not imply endorsement by
+the original author or UCI. Original workbook bytes are not included here;
+download_data.py retrieves the attributed public source.
+
+This project was developed with AI coding assistance. Its reports distinguish
+implemented work from the author's subsequent learning and independent mastery.

@@ -1,0 +1,2 @@
+# Preserve release bytes so file checksums remain valid on every platform.
+* -text
