@@ -1,0 +1,36 @@
+{
+  "rules_version": 1,
+  "raw_lines": 1067371,
+  "export_copies_excluded": 22523,
+  "retained_lines": 1044848,
+  "line_classes": {
+    "invalid_core": 0,
+    "adjustment": 22558,
+    "non_purchase": 2636,
+    "purchase": 1019654
+  },
+  "extra_exact_rows_retained": 11812,
+  "excluded_by_sheet": {
+    "Year 2009-2010": 22523
+  },
+  "orders": 40077,
+  "positive_recorded_sales_value": 20533741.918,
+  "average_order_value": 512.3572602240687,
+  "identified_orders": 36969,
+  "identified_order_value": 17431551.178,
+  "identified_order_share": 0.9224492851261322,
+  "identified_value_share": 0.8489222883783981,
+  "observed_customers": 5878,
+  "observed_repeat_customers": 4255,
+  "customer_id_conflict_orders": 0,
+  "purchase_lines_missing_customer_id": 228609,
+  "source_date_range": {
+    "start": "2009-12-01T07:45:00",
+    "end": "2011-12-09T12:50:00"
+  },
+  "partial_sales_months": [
+    "2011-12"
+  ],
+  "source_sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "built_at_utc": "2026-10-31T23:38:17.141081+00:00"
+}

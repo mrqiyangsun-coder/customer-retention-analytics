@@ -1,0 +1,57 @@
+{
+  "observed_orders": 40077,
+  "observed_positive_value": 20533741.917999998,
+  "complete_month_count": 24,
+  "partial_months": [
+    "2011-12"
+  ],
+  "latest_complete_month": {
+    "month": "2011-11",
+    "positive_sales_value": 1509496.33,
+    "orders": 2769,
+    "mom_sales_change": 0.30694665263697796,
+    "yoy_sales_change": 0.02667794472126972,
+    "previously_observed_value_share_identified": 0.9300576911665757
+  },
+  "matched_year_comparison": {
+    "earlier_year": "2010",
+    "later_year": "2011",
+    "matched_month_numbers": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11"
+    ],
+    "earlier_value": 9041353.614,
+    "later_value": 9204145.724,
+    "value_change": 0.018005280730080564,
+    "earlier_orders": 18435,
+    "later_orders": 17582,
+    "order_change": -0.046270680770273964,
+    "earlier_aov": 490.4450021155411,
+    "later_aov": 523.4982211352519,
+    "aov_change": 0.06739434366164465
+  },
+  "top_decile": {
+    "customer_count": 588,
+    "total_identified_customers": 5878,
+    "identified_value_share": 0.6384502557090792
+  },
+  "month1_activity_excluding_initial_cohort": {
+    "eligible_cohorts": 22,
+    "customers": 4704,
+    "active_customers": 990,
+    "activity_rate": 0.21045918367346939
+  },
+  "database_sha256": "732e1f2d758847b0b3bcbb3b811617769a3a0c380cfd6f260a48719b672607d1",
+  "source_sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "rules_version": 1,
+  "generated_at_utc": "2026-10-31T23:38:22.714200+00:00"
+}

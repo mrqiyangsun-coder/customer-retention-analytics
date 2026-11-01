@@ -1,0 +1,114 @@
+{
+  "dataset": "UCI Online Retail II",
+  "dataset_url": "https://archive.ics.uci.edu/dataset/502/online+retail+ii",
+  "audited_at_utc": "2026-10-31T23:37:41.296306+00:00",
+  "source_file": "online_retail_II.xlsx",
+  "sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "size_bytes": 45622278,
+  "download_provenance": {
+    "dataset": "Online Retail II",
+    "dataset_url": "https://archive.ics.uci.edu/dataset/502/online+retail+ii",
+    "archive_url": "https://archive.ics.uci.edu/static/public/502/online%2Bretail%2Bii.zip",
+    "retrieved_at_utc": "2026-10-31T22:43:19.485263+00:00",
+    "sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+    "size_bytes": 45622278,
+    "license": "CC BY 4.0",
+    "citation": "Chen, D. (2012). Online Retail II. UCI Machine Learning Repository. https://doi.org/10.24432/C5CG6D"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "pandas": "3.0.1",
+    "openpyxl": "3.1.5"
+  },
+  "raw_rows": 1067371,
+  "sheets": [
+    {
+      "name": "Year 2009-2010",
+      "raw_rows": 525461,
+      "original_columns": [
+        "Invoice",
+        "StockCode",
+        "Description",
+        "Quantity",
+        "InvoiceDate",
+        "Price",
+        "Customer ID",
+        "Country"
+      ],
+      "start": "2009-12-01T07:45:00",
+      "end": "2010-12-09T20:01:00",
+      "extra_exact_rows_within_sheet": 6865
+    },
+    {
+      "name": "Year 2010-2011",
+      "raw_rows": 541910,
+      "original_columns": [
+        "Invoice",
+        "StockCode",
+        "Description",
+        "Quantity",
+        "InvoiceDate",
+        "Price",
+        "Customer ID",
+        "Country"
+      ],
+      "start": "2010-12-01T08:26:00",
+      "end": "2011-12-09T12:50:00",
+      "extra_exact_rows_within_sheet": 5268
+    }
+  ],
+  "date_range": {
+    "start": "2009-12-01T07:45:00",
+    "end": "2011-12-09T12:50:00"
+  },
+  "rows_with_valid_dates": 1067371,
+  "missing_values": {
+    "invoice_no": 0,
+    "stock_code": 0,
+    "description": 4382,
+    "quantity": 0,
+    "invoice_date": 0,
+    "unit_price": 0,
+    "customer_id": 243007,
+    "country": 0
+  },
+  "flags": {
+    "cancellation_rows": 19494,
+    "negative_quantity": 22950,
+    "zero_quantity": 0,
+    "negative_unit_price": 5,
+    "zero_unit_price": 6202,
+    "invalid_quantity": 0,
+    "invalid_unit_price": 0,
+    "invalid_invoice_date": 0
+  },
+  "duplicates": {
+    "extra_exact_rows": 34335,
+    "patterns_in_multiple_sheets": 22202
+  },
+  "sheet_date_overlaps": [
+    {
+      "sheets": [
+        "Year 2009-2010",
+        "Year 2010-2011"
+      ],
+      "start": "2010-12-01T08:26:00",
+      "end": "2010-12-09T20:01:00"
+    }
+  ],
+  "purchase_candidates": {
+    "definition": "Known invoice/date, positive quantity/price, invoice not prefixed C. Provisional audit diagnostic; duplicates retained.",
+    "rows": 1041670,
+    "distinct_invoices": 40077,
+    "rows_without_customer_id": 236121,
+    "known_customers": 5878,
+    "customers_with_multiple_invoices": 4255
+  },
+  "limitations": [
+    "Raw records are retained; counts and temporal summaries may include workbook overlap and duplicate patterns.",
+    "Flag counts overlap and must not be added as mutually exclusive categories.",
+    "An invoice can have many lines; invoice counts are not line counts.",
+    "First/last observed months need completeness review before comparing monthly totals.",
+    "Observed first purchase is not necessarily acquisition; no causal campaign effect or profit is established."
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "selected_model": "logistic_l2_10",
+  "selection_rule": "Highest validation average precision; ties favor L2 penalty 1",
+  "validation": {
+    "logistic_l2_1": {
+      "customers": 3415,
+      "positives": 990,
+      "prevalence": 0.28989751098096633,
+      "average_precision": 0.6277589933759984,
+      "roc_auc": 0.7661559929188795,
+      "brier_score": 0.17893945228905175,
+      "top_decile_customers": 342,
+      "precision_at_top_decile": 0.7865497076023392,
+      "lift_at_top_decile": 2.7131992439009984
+    },
+    "logistic_l2_10": {
+      "customers": 3415,
+      "positives": 990,
+      "prevalence": 0.28989751098096633,
+      "average_precision": 0.6281471212460294,
+      "roc_auc": 0.7665442049359575,
+      "brier_score": 0.17899806630092122,
+      "top_decile_customers": 342,
+      "precision_at_top_decile": 0.7865497076023392,
+      "lift_at_top_decile": 2.7131992439009984
+    },
+    "constant_prevalence": {
+      "customers": 3415,
+      "positives": 990,
+      "prevalence": 0.28989751098096633,
+      "average_precision": 0.28989751098096633,
+      "roc_auc": 0.5,
+      "brier_score": 0.21713223817459967,
+      "top_decile_customers": 342,
+      "precision_at_top_decile": 0.39766081871345027,
+      "lift_at_top_decile": 1.3717289857640733
+    },
+    "recency_baseline": {
+      "customers": 3415,
+      "positives": 990,
+      "prevalence": 0.28989751098096633,
+      "average_precision": 0.38675332591736133,
+      "roc_auc": 0.6325637821514111,
+      "brier_score": 0.1963394700709937,
+      "top_decile_customers": 342,
+      "precision_at_top_decile": 0.5350877192982456,
+      "lift_at_top_decile": 1.8457823852560693
+    }
+  },
+  "test": {
+    "constant_prevalence": {
+      "customers": 2724,
+      "positives": 1081,
+      "prevalence": 0.39684287812041114,
+      "average_precision": 0.39684287812041114,
+      "roc_auc": 0.5,
+      "brier_score": 0.2393591860784451,
+      "top_decile_customers": 273,
+      "precision_at_top_decile": 0.3882783882783883,
+      "lift_at_top_decile": 0.9784184363277796
+    },
+    "recency_baseline": {
+      "customers": 2724,
+      "positives": 1081,
+      "prevalence": 0.39684287812041114,
+      "average_precision": 0.46448796057369934,
+      "roc_auc": 0.6048512372451063,
+      "brier_score": 0.22850698581763826,
+      "top_decile_customers": 273,
+      "precision_at_top_decile": 0.5238095238095238,
+      "lift_at_top_decile": 1.3199418527818159
+    },
+    "logistic_l2_10": {
+      "customers": 2724,
+      "positives": 1081,
+      "prevalence": 0.39684287812041114,
+      "average_precision": 0.709630775650731,
+      "roc_auc": 0.7576768653266768,
+      "brier_score": 0.18846791335275784,
+      "top_decile_customers": 273,
+      "precision_at_top_decile": 0.8791208791208791,
+      "lift_at_top_decile": 2.215287025647803
+    }
+  },
+  "solver_diagnostics": {
+    "logistic_l2_1": {
+      "penalty": 1.0,
+      "converged": true,
+      "iterations": 5,
+      "gradient_max": 1.9456747324397838e-10
+    },
+    "logistic_l2_10": {
+      "penalty": 10.0,
+      "converged": true,
+      "iterations": 5,
+      "gradient_max": 1.0951239914902544e-12
+    }
+  },
+  "baseline_training_prevalence": 0.39608269858541895,
+  "recency_baseline_training_rates": {
+    "recent_30d": 0.5369127516778524,
+    "older": 0.3108265424912689
+  },
+  "split_populations": {
+    "train": {
+      "customers": 2757,
+      "positives": 1092,
+      "prevalence": 0.39608269858541895
+    },
+    "validation": {
+      "customers": 3415,
+      "positives": 990,
+      "prevalence": 0.28989751098096633
+    },
+    "test": {
+      "customers": 2724,
+      "positives": 1081,
+      "prevalence": 0.39684287812041114
+    }
+  },
+  "cutoffs": {
+    "train": "2010-07-01",
+    "validation": "2011-01-01",
+    "test": "2011-07-01"
+  },
+  "features": [
+    "recency_days",
+    "orders_180d",
+    "value_180d",
+    "aov_180d",
+    "orders_30d",
+    "orders_60d",
+    "tenure_days"
+  ],
+  "lookback_days": 180,
+  "target_days": 60,
+  "source_sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "database_sha256": "732e1f2d758847b0b3bcbb3b811617769a3a0c380cfd6f260a48719b672607d1",
+  "rules_version": 1,
+  "implementation": "NumPy damped-Newton logistic regression",
+  "pandas_version": "3.0.1",
+  "numpy_version": "2.3.5",
+  "model_parameters": {
+    "penalty": 10.0,
+    "max_iterations": 100,
+    "gradient_tolerance": 1e-07,
+    "standardization": "training mean/std of log1p features",
+    "intercept_penalized": false
+  },
+  "generated_at_utc": "2026-11-01T00:13:26.493151+00:00",
+  "model_file_sha256": "e18b72e13d1e1b99277f42abc0a06b2804855b08081bde2a4d68ec821062bbab"
+}

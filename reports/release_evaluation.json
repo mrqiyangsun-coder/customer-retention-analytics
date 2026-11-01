@@ -1,0 +1,125 @@
+{
+  "protocol_version": 1,
+  "windows": [
+    {
+      "name": "original_july",
+      "cutoff": "2011-07-01",
+      "model_metrics": {
+        "customers": 2724,
+        "positives": 1081,
+        "prevalence": 0.39684287812041114,
+        "average_precision": 0.709630775650731,
+        "roc_auc": 0.7576768653266768,
+        "brier_score": 0.18846791335275784,
+        "top_decile_customers": 273,
+        "precision_at_top_decile": 0.8791208791208791,
+        "lift_at_top_decile": 2.215287025647803
+      },
+      "recency_metrics": {
+        "customers": 2724,
+        "positives": 1081,
+        "prevalence": 0.39684287812041114,
+        "average_precision": 0.46448796057369934,
+        "roc_auc": 0.6048512372451063,
+        "brier_score": 0.22850698581763826,
+        "top_decile_customers": 273,
+        "precision_at_top_decile": 0.5238095238095238,
+        "lift_at_top_decile": 1.3199418527818159
+      },
+      "ece": 0.015454839420832433,
+      "mean_predicted_probability": 0.3991225240627036,
+      "paired_ap_difference": {
+        "difference": 0.24514281507703162,
+        "lower": 0.22485868245406934,
+        "upper": 0.2683330435448209,
+        "resamples": 500,
+        "seed": 20261031,
+        "scope": "Paired customer percentile bootstrap conditional on fitted model and this window; not across-season or training-set uncertainty"
+      }
+    },
+    {
+      "name": "retrospective_april",
+      "cutoff": "2011-04-01",
+      "model_metrics": {
+        "customers": 3304,
+        "positives": 1158,
+        "prevalence": 0.35048426150121065,
+        "average_precision": 0.6733394259804878,
+        "roc_auc": 0.7537737397930359,
+        "brier_score": 0.18163945248442806,
+        "top_decile_customers": 331,
+        "precision_at_top_decile": 0.8549848942598187,
+        "lift_at_top_decile": 2.4394387656601393
+      },
+      "recency_metrics": {
+        "customers": 3304,
+        "positives": 1158,
+        "prevalence": 0.35048426150121065,
+        "average_precision": 0.4304314916861483,
+        "roc_auc": 0.6151344751934353,
+        "brier_score": 0.21496577175233375,
+        "top_decile_customers": 331,
+        "precision_at_top_decile": 0.5619335347432024,
+        "lift_at_top_decile": 1.6033060438614342
+      },
+      "ece": 0.043417819804232656,
+      "mean_predicted_probability": 0.3916139632387497,
+      "paired_ap_difference": {
+        "difference": 0.2429079342943395,
+        "lower": 0.21964338734212313,
+        "upper": 0.26572084016555236,
+        "resamples": 500,
+        "seed": 20261031,
+        "scope": "Paired customer percentile bootstrap conditional on fitted model and this window; not across-season or training-set uncertainty"
+      }
+    },
+    {
+      "name": "additional_september",
+      "cutoff": "2011-09-01",
+      "model_metrics": {
+        "customers": 2772,
+        "positives": 1360,
+        "prevalence": 0.4906204906204906,
+        "average_precision": 0.7482141868554655,
+        "roc_auc": 0.7277245459090151,
+        "brier_score": 0.21593593157211916,
+        "top_decile_customers": 278,
+        "precision_at_top_decile": 0.9136690647482014,
+        "lift_at_top_decile": 1.8622725349132458
+      },
+      "recency_metrics": {
+        "customers": 2772,
+        "positives": 1360,
+        "prevalence": 0.4906204906204906,
+        "average_precision": 0.5503205428902024,
+        "roc_auc": 0.5927845359106816,
+        "brier_score": 0.2513376649352068,
+        "top_decile_customers": 278,
+        "precision_at_top_decile": 0.6187050359712231,
+        "lift_at_top_decile": 1.2610664409648753
+      },
+      "ece": 0.08970863523335382,
+      "mean_predicted_probability": 0.4009118553871368,
+      "paired_ap_difference": {
+        "difference": 0.1978936439652631,
+        "lower": 0.17913861319849547,
+        "upper": 0.21496506996459375,
+        "resamples": 500,
+        "seed": 20261031,
+        "scope": "Paired customer percentile bootstrap conditional on fitted model and this window; not across-season or training-set uncertainty"
+      }
+    }
+  ],
+  "value_sensitivity": {
+    "current_positive_value": 20533741.918,
+    "within_sheet_deduplicated_positive_value": 20476260.448,
+    "removed_purchase_occurrences": 11741,
+    "deduplicated_value_change": -0.0027993665367740395,
+    "signed_valid_value": 18909762.118,
+    "signed_value_change": -0.07908835157689453
+  },
+  "model_file_sha256": "e18b72e13d1e1b99277f42abc0a06b2804855b08081bde2a4d68ec821062bbab",
+  "database_sha256": "732e1f2d758847b0b3bcbb3b811617769a3a0c380cfd6f260a48719b672607d1",
+  "source_sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "generated_at_utc": "2026-11-01T00:13:31.994604+00:00"
+}
