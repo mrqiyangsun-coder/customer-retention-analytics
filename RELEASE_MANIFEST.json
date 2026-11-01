@@ -8,7 +8,7 @@
     ".streamlit/config.toml": "a02c8bd0fb37965a34b5aa514918f06b2a7945bfbba67e26b49810f045dcc944",
     "LICENSE": "f5eee63fb76b6585d82d7c3e7e7c5136331316c3256e72cb6bdf587f234d20de",
     "NOTICE": "78e74f525ff17397ab69bd14ef60552199d12ba1181d1cc7b646ff7c6adadf1d",
-    "README.md": "36ffcebe9f9573273096439b8c79c0146cccf7033464081335c7d97d13de5fe3",
+    "README.md": "d7d6a997dadbfeff6be57f5affc13877a2bdf9101aacdc531927bb5130b3238e",
     "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
     "analysis.py": "484bf9353ae603bc51991f9110e54b3e4d65593100c660fac9331efa927be6d8",
     "audit.py": "2d533fe2c048a1ebebe875ecb1732e7f9945a2eb4794e94eb32631bc9e70c8d0",
@@ -17,8 +17,8 @@
     "dashboard_data.py": "5900323dcee13b53cd5ad35d55863f8e6ff159ba8213ae9ccc8ddcb956fa7cfd",
     "docs/cleaning_rules.md": "fe0ca6bd032a8084e36497f070540b6333f2356153ed8577bf3a39cc472a3c1c",
     "docs/data_dictionary.md": "510137e7b756601694ea03359fd93afdb3f1011330095f5d8c11d444f12f5409",
-    "docs/release_notes.md": "566204b2f02ef49e4918a18c0541d722e80a5e7867115d2dd1d584b563d019d7",
-    "docs/release_readme.md": "36ffcebe9f9573273096439b8c79c0146cccf7033464081335c7d97d13de5fe3",
+    "docs/release_notes.md": "a51063dfec87571e526d721b88c0ab8b89760ac6e697a51ef0ab9e8c3455fc0b",
+    "docs/release_readme.md": "d7d6a997dadbfeff6be57f5affc13877a2bdf9101aacdc531927bb5130b3238e",
     "download_data.py": "5d72ddd1c442ec78ebd82593a5091fdcab24fc8effc0ea3dcc5e90f4de8b5ba1",
     "launch_dashboard.ps1": "21e9250e8712735fa741dc3e09a269f0daf011c9a7975e77f1ba4cd0194d7bdd",
     "package_release.py": "b88daaf67cc1486745bde76e2428b77e8bfe25512943540ff27589259623558d",
@@ -64,5 +64,6 @@
     "tests/test_package_release.py": "99d7a690b18b6a85e2bfcca3829b4f66017020d20a1aa86148105ec52bcb3d99",
     "tests/test_prediction.py": "6669bebae04e825f4dc2bc6dc30b8aff092ddf895465a48c6a71f6b1c3668c9f",
     "tests/test_release_evaluation.py": "179d1f3fbe3e84006bdc3655887589cf80127ea9c2dca0b39c7a40f791cd3e9d"
-  }
+  },
+  "documentation_updated_at_utc": "2026-11-01T01:22:42.497038+00:00"
 }
