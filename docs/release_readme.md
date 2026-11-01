@@ -1,84 +1,119 @@
-# Customer Retention & Sales Analytics
+# Customer Retention & Purchase Prediction
 
-**Portfolio release 1.0.0** · Python 3.12 · pandas · SQL/SQLite · NumPy · Streamlit
+**Retail analytics with Python, SQL, NumPy and Streamlit**
 
-A reproducible study of retail sales, repeat purchasing and next-60-day purchase propensity. It combines a source audit, documented cleaning, SQL analysis, an interactive dashboard and temporal model evaluation. Developed with AI coding assistance; results and limitations are documented below.
+Which customers return, how concentrated are sales, and who is likely to purchase again? This project explores those questions using **1.07 million retail invoice lines**, combining SQL analysis, an interactive dashboard and a model evaluated on later time periods.
 
-![Dashboard preview](reports/figures/dashboard_preview.png)
+[![Project checks](https://github.com/mrqiyangsun-coder/customer-retention-analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/mrqiyangsun-coder/customer-retention-analytics/actions/workflows/ci.yml)
 
-## Business questions and findings
+[Business findings](reports/business_memo.md) · [Model evaluation](reports/prediction_assessment.md) · [Robustness & reliability](reports/release_evaluation.md) · [Download v1.0.0](https://github.com/mrqiyangsun-coder/customer-retention-analytics/releases/tag/v1.0.0)
 
-- **Sales composition:** January-November 2011 positive recorded value rose **1.8%** versus the same months in 2010, despite **4.6% fewer orders**; average order value rose **6.7%**. This decomposes the change but does not identify its cause.
-- **Customer dependence:** the top 588 of 5,878 identified customers supply **63.8%** of identified positive value. Anonymous sales are outside that denominator.
-- **Purchase ranking:** the original July temporal test has **2,724 eligible customers**, model AP **0.710**, ROC AUC **0.758**, and a **87.9%** top-decile purchase rate versus **39.7%** population prevalence. Recency-baseline AP is **0.464**.
-- **Robustness:** frozen-model AP is **0.673** in April and **0.748** in September, each above its recency baseline. Reliability varies: September's ten-bin ECE is **0.090**, so ranking quality does not guarantee stable probabilities.
-- **Cleaning sensitivity:** removing retained within-sheet normalized copies changes aggregate positive value by **-0.28%**. A signed-charge bookkeeping scenario is **7.91% lower** than positive value; it is not established refund-net revenue.
+## What the analysis shows
 
-Read the [business memo](reports/business_memo.md), [model assessment](reports/prediction_assessment.md), and [robustness/sensitivity report](reports/release_evaluation.md). Proposed customer outreach requires a randomized experiment before claiming incremental impact.
+| Question | Finding |
+|---|---|
+| How did sales change? | January–November 2011 recorded **1.8% more positive sales value** than the same months in 2010, with **4.6% fewer orders** and **6.7% higher average order value**. |
+| How dependent is the retailer on its largest customers? | The top **588 of 5,878 identified customers** accounted for **63.8%** of identified positive sales value. |
+| Can purchase history improve customer ranking? | On the July 2011 test snapshot, the model achieved **0.710 average precision** versus **0.464** for the recency baseline, with **0.758 ROC AUC** across **2,724 eligible customers**. |
 
-## Quick start
+Sales value here means positive recorded charges before deducting refunds. Customer concentration uses identified customers only. Model scores estimate purchase propensity; they do not measure the effect of sending an offer.
 
-Use Python **3.12**. No API key or paid service is required. Saved report files let the dashboard run before downloading raw data.
+## Explore the dashboard
 
-Windows PowerShell, from this repository's root:
+The five views connect the business questions to the underlying evidence:
+
+- **Sales overview:** filter complete months and inspect sales, order counts, average order value and customer contribution.
+- **Customer cohorts:** compare purchasing activity by first observed purchase month, with unobserved follow-up kept distinct from zero activity.
+- **Customer concentration:** examine how recorded value is distributed across identified customers.
+- **Purchase prediction:** compare the model with baselines and inspect performance and probability reliability across time.
+- **Definitions & downloads:** review metric definitions, source provenance and supporting tables.
+
+![Purchase prediction dashboard preview](reports/figures/dashboard_preview.png)
+
+[Run the dashboard locally](#run-locally). Saved reports are included, so viewing it does not require downloading the original workbook or training a model.
+
+## From source data to evidence
+
+**Source audit → documented cleaning → SQLite & SQL analysis → customer features → temporal evaluation → dashboard**
+
+The pipeline reconciles **22,523 cross-export copies** into **40,077 qualifying orders**, while retaining adjustment records and anonymous sales for traceability. Identified-customer orders cover **84.89%** of positive recorded value. [Cleaning rules](docs/cleaning_rules.md) and the [data dictionary](docs/data_dictionary.md) document the choices and coverage.
+
+### Prediction design
+
+- **Population:** identified customers with a qualifying purchase in the preceding 180 days.
+- **Target:** at least one qualifying purchase in the next 60 days.
+- **Features:** past recency, order frequency, recorded value, average order value and observed tenure. Customer IDs and future orders are excluded from model inputs.
+- **Chronology:** train at July 2010, choose between two fixed regularization settings using January 2011 validation, then evaluate on July 2011. Preprocessing is fitted on training data only.
+- **Comparisons:** constant-prevalence and recency baselines; average precision, ROC AUC, Brier score and top-decile purchase rate.
+
+The same fitted model was subsequently evaluated at fixed April and September 2011 cutoffs, with average precision of **0.673** and **0.748**, respectively. Both exceed their recency baselines. Probability reliability changes across periods: September's ten-bin calibration error is **0.090**. The [robustness report](reports/release_evaluation.md) includes reliability bins, conditional bootstrap intervals and cleaning-sensitivity scenarios.
+
+## Run locally
+
+Use **Python 3.12**. No API key or paid service is required.
+
+<details open>
+<summary><strong>Windows PowerShell</strong></summary>
+
+From the repository root:
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
 .\.venv\Scripts\python.exe -m streamlit run streamlit_app.py --server.address 127.0.0.1
 ```
 
-Open http://127.0.0.1:8501. Keep the terminal running; stop with Ctrl+C. Alternatively use `./launch_dashboard.ps1` after creating the environment.
+</details>
 
-macOS/Linux:
+<details>
+<summary><strong>macOS / Linux</strong></summary>
 
 ```bash
 python3.12 -m venv .venv
 .venv/bin/python -m pip install -r requirements-lock.txt
-.venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python -m streamlit run streamlit_app.py --server.address 127.0.0.1
 ```
 
-To reproduce all source-derived artifacts (downloads the public workbook on first run):
+</details>
+
+Open **http://127.0.0.1:8501** and leave the terminal running. Stop with Ctrl+C.
+
+To run the checks or reproduce the complete pipeline:
 
 ```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
 .\.venv\Scripts\python.exe run_pipeline.py
 ```
 
-Use `.venv/bin/python run_pipeline.py` on macOS/Linux. Workbook audit and cleaning can take several minutes. Generated data/model artifacts remain ignored under `data/`; the original cached source is checksum-verified and preserved. Rebuilding reports after source/policy changes creates a new evaluation; do not silently treat changed settings as an untouched test.
+On macOS/Linux, substitute `.venv/bin/python`. Reproduction downloads the attributed public workbook on first run and can take several minutes. Raw data, derived databases and fitted model artifacts stay under the ignored `data/` directory. The published project has **54 automated tests** covering data rules, time boundaries, numerical metrics and dashboard interactions.
 
-## Dashboard
+## Interpretation and limits
 
-Five views cover sales, customer cohorts, concentration, purchase prediction, and definitions/downloads. Sales filters admit complete months only. Cohort and concentration views keep full-history scopes; model results keep fixed evaluation windows. Hover charts for values and download supporting tables.
+These are historical records from a UK gift retailer, including wholesalers. First observed purchase is not necessarily acquisition, and a period without purchasing does not establish permanent churn. Anonymous and long-inactive customers are outside model eligibility; customers may recur across evaluation periods. The reported bootstrap intervals are conditional on the fitted model and individual window.
 
-## Method and safeguards
+The analysis supports investigation of purchasing patterns and customer dependence. A randomized outreach experiment would be needed to establish incremental purchases or marketing return. Positive recorded value is not profit or established refund-net revenue.
 
-- Original source: 1,067,371 invoice lines in two sheets. Reconcile 22,523 cross-export occurrences while preserving maximum per-sheet multiplicity; retain the adjustment and excluded-copy evidence.
-- Final purchase dataset: 40,077 qualifying orders; identified orders cover 84.89% of positive recorded value. Invoice lines and orders are separate units.
-- Customers active in the prior 180 days are eligible; target is any qualifying purchase in the next 60 days. Features stop strictly before cutoff. Train 2010-07-01, validate 2011-01-01, original test 2011-07-01. Customers recur across periods; this addresses existing-customer forecasting.
-- Training-only log1p transforms/standardization and logistic fitting. Fixed L2 penalties 1 and 10 selected on validation AP only, with constant-prevalence and recency baselines. Additional April/September evaluations never change model selection.
-- Logistic regression uses a tested NumPy damped-Newton optimizer with an unpenalized intercept and explicit gradient convergence checks. NumPy was used after SciPy's compiled dependency was blocked in the development environment; no scikit-learn result is claimed.
-- Reliability uses ten fixed probability bins. Paired 500-resample customer bootstrap intervals are conditional on the fitted model/window and are not uncertainty across training sets or seasons. No test-set recalibration or intervention-effect estimate is claimed.
+<details>
+<summary><strong>Implementation notes and repository guide</strong></summary>
 
-## Scope and limitations
-
-Positive recorded value excludes adjustments and does **not** equal profit or established refund-net revenue. First observed purchase does not prove acquisition; a month without purchases does not prove permanent churn. December 2011 is partial. Historical UK gift retail includes wholesalers. Anonymous/long-inactive customers are outside model eligibility; recurring customers mean time windows are not independent samples of new people. This is a portfolio study, not a production targeting system.
-
-## Repository map
+Logistic regression uses a NumPy damped-Newton optimizer with training-standardized log1p features, an unpenalized intercept and explicit gradient convergence checks. Fixed L2 penalties 1 and 10 were compared on validation average precision. The NumPy implementation followed a development-environment restriction on SciPy's compiled dependency; no scikit-learn benchmark is claimed.
 
 | Files | Purpose |
 |---|---|
-| `download_data.py`, `audit.py`, `clean.py` | Public source, provenance, classification and analytical SQLite dataset |
-| `sql/`, `analysis.py`, `charts.py` | Reproducible business metrics, cohorts, concentration and static charts |
-| `prediction.py`, `release_evaluation.py` | Past-only features, fixed model study, reliability and sensitivity |
-| `streamlit_app.py`, `dashboard_data.py` | Five-view read-only report dashboard |
-| `tests/` | Hand-derived data, leakage, numerical and app-interaction tests |
-| `reports/` | Saved CSV/JSON evidence and readable assessments |
-| `docs/cleaning_rules.md`, `docs/data_dictionary.md` | Definitions and coverage contracts |
-| `run_pipeline.py`, `package_release.py` | Full reproduction and explicitly allowlisted release archive |
-| `.github/workflows/ci.yml` | Fresh Python installation and unit/app checks on pushes/PRs |
+| `download_data.py`, `audit.py`, `clean.py` | Source provenance, audit and analytical dataset |
+| `sql/`, `analysis.py`, `charts.py` | Business metrics, cohorts, concentration and charts |
+| `prediction.py`, `release_evaluation.py` | Past-only features, model evaluation, reliability and sensitivity |
+| `streamlit_app.py`, `dashboard_data.py` | Interactive report dashboard |
+| `tests/`, `.github/workflows/ci.yml` | Regression tests and automated checks |
+| `reports/`, `docs/` | Findings, metric definitions and supporting evidence |
+| `run_pipeline.py`, `package_release.py` | Reproduction and standalone release packaging |
 
-## Attribution
+Developed with AI coding assistance. The documented results describe the implemented project and its evaluation.
 
-Chen, D. (2012). **Online Retail II**. UCI Machine Learning Repository. [DOI: 10.24432/C5CG6D](https://doi.org/10.24432/C5CG6D). Dataset and derived reports: CC BY 4.0; project code: MIT. See [NOTICE](NOTICE) and [LICENSE](LICENSE).
+</details>
+
+## Data and attribution
+
+Chen, D. (2012). **Online Retail II**. UCI Machine Learning Repository. [DOI: 10.24432/C5CG6D](https://doi.org/10.24432/C5CG6D).
+
+Dataset and derived reports: **CC BY 4.0**. Project code: **MIT**. See [NOTICE](NOTICE) and [LICENSE](LICENSE).
